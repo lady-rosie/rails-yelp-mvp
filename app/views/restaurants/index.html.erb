@@ -1,7 +1,16 @@
-<h1>Restaurants</h1>
-
-<ul>
-<% @restaurants.each do|resto| %>
-<li><%= resto.name %> - <%= resto.address %> - <%= resto.phone_number %></li>
-<% end %>
-</ul>
+<div class="container">
+  <div class="card" style="width: 18rem;">
+    <div class="card-header">
+      <h1>Restaurants</h1>
+    </div>
+    <ul class="list-group list-group-flush">
+    <% @restaurants.each do|resto| %>
+      <li class="list-group-item">
+        <%= link_to resto.name, restaurant_path(resto.id) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <button type="button" class="btn btn-outline-primary mt-3">
+    <%= link_to 'Add a restaurant', new_restaurant_path %>
+  </button>
+</div>

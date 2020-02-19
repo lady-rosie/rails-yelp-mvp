@@ -1,2 +1,7 @@
+<div class="container">
 <h1>Add a review to <%= @restaurant.name %> </h1>
 <%= render "form" %>
+
+<%= link_to 'Cancel', restaurant_path(@restaurant) %>
+<%= link_to 'Back to list', restaurants_path %>
+</div>

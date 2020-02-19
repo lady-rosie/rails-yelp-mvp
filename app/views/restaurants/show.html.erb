@@ -1,14 +1,19 @@
-<h1><%= @restaurant[:name]%></h1>
-<h3>Category: <%= @restaurant.category %> </h3>
-<p>Address: <%= @restaurant.address %></p>
-<p>Phone: <%= @restaurant.phone_number %></p>
+<div class="container">
+  <div class="card" style="width: 100%;">
+      <div class="card-body">
+    <h1 class="card-title"><%= @restaurant[:name]%></h1>
+    <h6 class="card-subtitle mb-2 text-muted">Category:<%= @restaurant.category %> </h6>
+    <p class="card-text">Address: <%= @restaurant.address %></p>
+    <p class="card-text">Phone: <%= @restaurant.phone_number %></p>
+    <h6 class="card-subtitle mb-2 text-muted">What people think:</h6>
+    <ul>
+        <% @restaurant.reviews.each do |review| %>
+          <li><%= review.content %> - Rating: <%= review.rating %>/5</li>
+        <% end %>
+    </ul>
+    <p><%= link_to 'Add a review', new_restaurant_review_path(@restaurant) %></p>
+    </div>
+  </div>
+    <%= link_to 'Back to list', restaurants_path %></p>
+</div>
 
-<h2>What people think:</h2>
-<ul>
-  <% @restaurant.reviews.each do |review| %>
-    <li><%= review.content %> - Rating: <%= review.rating %>/5</li>
-    <% if review == nil %>
-      <p>No review yet. Be the first to write a review !</p>
-    <% end %>
-  <% end %>
-</ul>
